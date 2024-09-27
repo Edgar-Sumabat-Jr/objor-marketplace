@@ -122,3 +122,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = [
+    'app1.backends.EmailBackend',  # Ensure your custom backend is here
+    'django.contrib.auth.backends.ModelBackend',  # Include the default backend as well
+]
+
+LOGOUT_REDIRECT_URL = 'home'
