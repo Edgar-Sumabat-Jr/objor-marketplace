@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Shopping Cart{% endblock %}
+
+{% block content %}
+    <div class="text-center my-4">
+        <h1>Your Shopping Bag is Empty</h1>
+        <p>Why not take a look at our trending pieces?</p>
+    </div>
+
+    <div class="trending-section">
+        <h2 class="text-center">Trending Now</h2>
+        <div class="row justify-content-center">
+            {% for product in trending_products %}
+                <div class="col-md-4 mb-4">
+                    <div class="product p-3 border rounded shadow-sm">
+                        <img src="{{ product.image }}" alt="{{ product.name }}" class="img-fluid mb-3" style="border-radius: 8px;">
+                        <h3>{{ product.name }}</h3>
+                        <p>Price: {{ product.price }}</p>
+                        <p>{{ product.description }}</p>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12 text-center">
+                    <p class="text-muted">No trending products available at the moment.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <div class="links">
+            <a href="#" class="mx-2">Join My Pandora</a>
+            <a href="#" class="mx-2">Explore Our Rewards Program</a>
+            <a href="#" class="mx-2">Shop All Products</a>
+            <a href="#" class="mx-2">Learn More About Us</a>
+        </div>
+    </div>
+{% endblock %}

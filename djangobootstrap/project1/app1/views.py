@@ -4,6 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib import messages
+from .models import JewelryCategory
+from django.templatetags.static import static
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -20,8 +22,11 @@ class CustomUserCreationForm(UserCreationForm):
             user.save()
         return user
 
+
 def home_view(request):
-    return render(request, 'home.html')
+    categories = JewelryCategory.objects.all()
+    return render(request, 'home.html', {'categories': categories})
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -50,3 +55,28 @@ def register(request):
         form = CustomUserCreationForm()
     
     return render(request, 'register.html', {'form': form})
+
+
+def cart_view(request):
+    trending_products = [
+        {
+            'name': 'Sparkling Heart Ring',
+            'price': '$55.00',
+            'description': 'A delicate heart-shaped ring adorned with sparkling stones.',
+            'image': static('images/rings.jpg')  # Use the static helper
+        },
+        {
+            'name': 'Classic Pandora Bracelet',
+            'price': '$65.00',
+            'description': 'A timeless silver bracelet, perfect for your charms.',
+            'image': static('images/bracelets.jpg')  # Use the static helper
+        },
+        {
+            'name': 'Rose Gold Pendant Necklace',
+            'price': '$75.00',
+            'description': 'An elegant necklace featuring a rose gold pendant.',
+            'image': static('images/necklaces.jpg')  # Use the static helper
+        }
+    ]
+    
+    return render(request, 'cart.html', {'trending_products': trending_products})
