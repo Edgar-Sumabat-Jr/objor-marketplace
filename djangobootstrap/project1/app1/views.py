@@ -80,3 +80,15 @@ def cart_view(request):
     ]
     
     return render(request, 'cart.html', {'trending_products': trending_products})
+
+def bracelet_view(request):
+    return render(request, 'bracelet.html')
+
+def rings_view(request):
+    return render(request, 'rings.html')
+
+def earrings_view(request):
+    return render(request, 'earrings.html')
+
+def necklace_view(request):
+    return render(request, 'necklace.html')
