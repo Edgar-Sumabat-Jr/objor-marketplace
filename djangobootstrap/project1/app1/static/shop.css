@@ -1,0 +1,297 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.breadcrumb {
+    padding: 15px;
+    font-size: 14px;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #555;
+}
+
+.product-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.images {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.images img {
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.small-images {
+    display: flex;
+    gap: 10px;
+}
+
+.small-images img {
+    width: 48%;
+}
+
+.product-info {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.product-info h1 {
+    color: #f00;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.product-info h2 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.limited {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.rating {
+    margin: 10px 0;
+}
+
+.rating span {
+    font-size: 16px;
+}
+
+.points {
+    margin-bottom: 20px;
+}
+
+.metal p {
+    margin: 10px 0;
+}
+
+.metal label {
+    margin-right: 10px;
+}
+
+.size p {
+    margin: 10px 0;
+}
+
+.size button {
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.actions {
+    margin: 20px 0;
+}
+
+.add-to-bag {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.find-in-store {
+    padding: 10px 20px;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.payment-options p {
+    font-size: 14px;
+    color: #555;
+}
+
+.payment-options a {
+    text-decoration: none;
+    color: black;
+}
+
+/* New Styles for the Grid of Images */
+.image-grid-container {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.image-grid-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.grid-item {
+    text-align: center;
+}
+
+.grid-item img {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.grid-item p {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.grid-item img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 0 50px;
+    justify-items: center;
+}
+
+.product-card {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    width: 100%;
+    max-width: 240px;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.best-seller {
+    font-size: 12px;
+    color: #d9534f;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    font-size: 14px;
+    color: #555;
+}
+.section-title {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 0 50px;
+    justify-items: center;
+}
+
+.product-card {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    width: 100%;
+    max-width: 240px;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.best-seller {
+    font-size: 12px;
+    color: #d9534f;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.small-button {
+    padding: 5px 10px;
+    font-size: 12px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.small-button:hover {
+    background-color: #555;
+}

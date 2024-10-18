@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import JewelryCategory
 from django.templatetags.static import static
-
+from django.http import JsonResponse
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -92,3 +92,54 @@ def earrings_view(request):
 
 def necklace_view(request):
     return render(request, 'necklace.html')
+
+def add_to_cart(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        image = request.POST.get('image')
+        description = request.POST.get('description')
+
+        # Create a cart item dictionary
+        cart_item = {
+            'name': name,
+            'price': price,
+            'image': image,
+            'description': description,
+        }
+
+        # Initialize cart in session if it doesn't exist
+        if 'cart_items' not in request.session:
+            request.session['cart_items'] = []
+
+        # Add the new item to the cart
+        request.session['cart_items'].append(cart_item)
+        request.session.modified = True  # Mark the session as modified
+
+        return redirect('cart')  # Redirect to the cart page
+
+    return JsonResponse({'status': 'error'}, status=400)
+
+def cart_view(request):
+    cart_items = request.session.get('cart_items', [])
+    
+    return render(request, 'cart.html', {'cart_items': cart_items})
+
+def remove_from_cart(request):
+    if request.method == 'POST':
+        index = int(request.POST.get('index'))
+        
+        # Retrieve the cart items from the session
+        cart_items = request.session.get('cart_items', [])
+        
+        # Remove the item at the specified index
+        if 0 <= index < len(cart_items):
+            cart_items.pop(index)
+        
+        # Save the updated cart back to the session
+        request.session['cart_items'] = cart_items
+        request.session.modified = True  # Mark the session as modified
+
+        return redirect('cart')  # Redirect back to the cart page
+
+    return JsonResponse({'status': 'error'}, status=400)
