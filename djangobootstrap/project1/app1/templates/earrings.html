@@ -4,7 +4,7 @@
 
 {% block content %}
 <head>
-    <link rel="stylesheet" href="{% static 'bracelet.css' %}">
+    <link rel="stylesheet" href="{% static 'shop.css' %}">
 </head>
 
 <div class="breadcrumb">
@@ -14,8 +14,8 @@
 <div class="product-container">
     <div class="images">
         <div class="small-images">
-            <img src="{% static 'images/image1.jpg' %}" alt="Bracelet on Model 1">
-            <img src="{% static 'images/image3.jpg' %}" alt="Bracelet on Model 2">
+            <img src="{% static 'images/earrings.jpg' %}" alt="Earrings on Model 1">  <!-- Updated image -->
+            <img src="{% static 'images/earrings.jpg' %}" alt="Earrings on Model 2">  <!-- Updated image -->
         </div>
     </div>
 
@@ -46,10 +46,17 @@
             <button>7.9 in</button>
         </div>
 
-        <div class="actions">
-            <button class="add-to-bag">ADD TO BAG</button>
-            <button class="find-in-store">FIND IN-STORE</button>
-        </div>
+        <form method="POST" action="{% url 'add_to_cart' %}">
+            {% csrf_token %}
+            <input type="hidden" name="name" value="Gold Earrings">
+            <input type="hidden" name="price" value="$395.00">
+            <input type="hidden" name="image" value="{% static 'images/earrings.jpg' %}">  <!-- Updated image -->
+            <input type="hidden" name="description" value="Elegant gold earrings that add a touch of sophistication to any outfit.">
+            <div class="actions">
+                <button type="submit" class="add-to-bag">ADD TO BAG</button>
+                <button class="find-in-store">FIND IN-STORE</button>
+            </div>
+        </form>
 
         <div class="payment-options">
             <p>4 interest-free payments of $98.75 with <a href="#">Klarna</a> or <a href="#">Afterpay</a>.</p>
@@ -61,26 +68,26 @@
 
 <div class="product-grid">
     <div class="product-card">
-        <img src="{% static 'images/br1.jpg' %}" alt="Sparkling Tennis Bracelet">
+        <img src="{% static 'images/br.jpg' %}" alt="Sparkling Tennis Bracelet">
         <p class="best-seller">Best Seller</p>
         <p class="product-name">Sparkling Tennis Bracelet</p>
         <p class="product-price">$195.00</p>
         <button class="small-button">Add to Bag</button>
     </div>
     <div class="product-card">
-        <img src="{% static 'images/br2.jpg' %}" alt="Sparkling Halo Tennis Bracelet">
+        <img src="{% static 'images/br.jpg' %}" alt="Sparkling Halo Tennis Bracelet">
         <p class="product-name">Sparkling Halo Tennis Bracelet</p>
         <p class="product-price">$195.00</p>
         <button class="small-button">Add to Bag</button>
     </div>
     <div class="product-card">
-        <img src="{% static 'images/br3.jpg' %}" alt="Treated Freshwater Cultured Pearl & Beads Bracelet">
+        <img src="{% static 'images/br.jpg' %}" alt="Treated Freshwater Cultured Pearl & Beads Bracelet">
         <p class="product-name">Treated Freshwater Cultured Pearl & Beads Bracelet</p>
         <p class="product-price">$200.00</p>
         <button class="small-button">Add to Bag</button>
     </div>
     <div class="product-card">
-        <img src="{% static 'images/br4.jpg' %}" alt="Pandora Timeless Pavé Cuban Chain Bracelet">
+        <img src="{% static 'images/br.jpg' %}" alt="Pandora Timeless Pavé Cuban Chain Bracelet">
         <p class="best-seller">Best Seller</p>
         <p class="product-name">Pandora Timeless Pavé Cuban Chain Bracelet</p>
         <p class="product-price">$225.00</p>
