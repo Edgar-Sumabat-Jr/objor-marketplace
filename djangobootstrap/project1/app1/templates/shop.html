@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'shop.css' %}">
+</head>
+
+<div class="breadcrumb">
+    <!-- Breadcrumb content can be added here -->
+</div>
+
+<div class="product-container">
+    <div class="images">
+        <div class="small-images">
+            <img src="{% static category.image %}" alt="{{ category.name }} Image">
+            <img src="{% static category.image %}" alt="{{ category.name }} Alternate Image">
+        </div>
+    </div>
+
+    <div class="product-info">
+        <h1>BEST SELLER</h1>
+        <h2>{{ category.name }}</h2>
+        <p class="price">$395.00</p>
+        <p class="limited">Limited quantities available</p>
+
+        <div class="rating">
+            <span>★★★☆☆</span> <span>(7 Reviews)</span>
+        </div>
+
+        <div class="points">
+            <p>Earn up to 395 points when you purchase this item. <a href="#">Learn more</a></p>
+        </div>
+
+        <div class="metal">
+            <p>Metal: Gold plated</p>
+            <label><input type="radio" name="metal" value="gold"> Gold</label>
+            <label><input type="radio" name="metal" value="silver"> Silver</label>
+        </div>
+
+        <div class="size">
+            <p>Select Size:</p>
+            <button>6.3 in</button>
+            <button>7.1 in</button>
+            <button>7.9 in</button>
+        </div>
+
+        <form method="POST" action="{% url 'add_to_cart' %}">
+            {% csrf_token %}
+            <input type="hidden" name="name" value="{{ category.name }}">
+            <input type="hidden" name="price" value="$395.00">
+            <input type="hidden" name="image" value="{% static category.image %}">
+            <input type="hidden" name="description" value="A beautiful {{ category.name }} perfect for any occasion.">
+            <div class="actions">
+                <button type="submit" class="add-to-bag">ADD TO BAG</button>
+                <button class="find-in-store">FIND IN-STORE</button>
+            </div>
+        </form>
+
+        <div class="payment-options">
+            <p>4 interest-free payments of $98.75 with <a href="#">Klarna</a> or <a href="#">Afterpay</a>.</p>
+        </div>
+    </div>
+</div>
+
+<h2 class="section-title">Similar Products</h2>
+
+<div class="product-grid">
+    <div class="product-card">
+        <a href="{% url 'category_detail' category.id %}"> <!-- Link to the specific product's detail page -->
+            <img src="{% static category.image %}" alt="{{ category.name }}">
+            <p class="best-seller">Best Seller</p>
+            <p class="product-name">{{ category.name }} Example 1</p>
+            <p class="product-price">$195.00</p>
+            <button class="small-button">View Product</button>
+        </a>
+    </div>
+    <div class="product-card">
+        <a href="{% url 'category_detail' category.id %}"> <!-- Link to the specific product's detail page -->
+            <img src="{% static category.image %}" alt="{{ category.name }}">
+            <p class="product-name">{{ category.name }} Example 2</p>
+            <p class="product-price">$195.00</p>
+            <button class="small-button">View Product</button>
+        </a>
+    </div>
+    <div class="product-card">
+        <a href="{% url 'category_detail' category.id %}"> <!-- Link to the specific product's detail page -->
+            <img src="{% static category.image %}" alt="{{ category.name }}">
+            <p class="product-name">{{ category.name }} Example 3</p>
+            <p class="product-price">$200.00</p>
+            <button class="small-button">View Product</button>
+        </a>
+    </div>
+    <div class="product-card">
+        <a href="{% url 'category_detail' category.id %}"> <!-- Link to the specific product's detail page -->
+            <img src="{% static category.image %}" alt="{{ category.name }}">
+            <p class="best-seller">Best Seller</p>
+            <p class="product-name">{{ category.name }} Example 4</p>
+            <p class="product-price">$225.00</p>
+            <button class="small-button">View Product</button>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

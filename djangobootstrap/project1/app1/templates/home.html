@@ -17,30 +17,14 @@
 <div class="container">
     <h1 class="text-center my-4">Jewelry Categories</h1>
     <div class="row">
+        {% for category in categories %}
         <div class="col-md-3 text-center text-muted">
-            <h4 class="fw-normal">Rings</h4>
-            <a href="{% url 'rings' %}">
-                <img src="{% static 'images/rings.jpg' %}" class="img-fluid category-img" alt="Rings"> <!-- Added category-img class -->
+            <h4 class="fw-normal">{{ category.name }}</h4>
+            <a href="{% url 'category_detail' category.id %}"> <!-- Adjust the URL as needed -->
+                <img src="{% static category.image %}" class="img-fluid category-img" alt="{{ category.name }}"> <!-- Use the image path from the category -->
             </a>
         </div>
-        <div class="col-md-3 text-center text-muted">
-            <h4 class="fw-normal">Bracelets</h4>
-            <a href="{% url 'bracelet' %}">
-                <img src="{% static 'images/bracelets.jpg' %}" class="img-fluid category-img" alt="Bracelets"> <!-- Added category-img class -->
-            </a>
-        </div>
-        <div class="col-md-3 text-center text-muted">
-            <h4 class="fw-normal">Earrings</h4>
-            <a href="{% url 'earrings' %}">
-                <img src="{% static 'images/earrings.jpg' %}" class="img-fluid category-img" alt="Earrings"> <!-- Added category-img class -->
-            </a>
-        </div>
-        <div class="col-md-3 text-center text-muted">
-            <h4 class="fw-normal">Necklaces</h4>
-            <a href="{% url 'necklace' %}">
-                <img src="{% static 'images/necklaces.jpg' %}" class="img-fluid category-img" alt="Necklaces"> <!-- Added category-img class -->
-            </a>
-        </div>
+        {% endfor %}
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

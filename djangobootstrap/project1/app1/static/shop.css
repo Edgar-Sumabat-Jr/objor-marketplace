@@ -25,6 +25,8 @@ body {
     padding: 20px;
 }
 
+
+
 .images {
     flex: 1;
     padding-right: 20px;
@@ -135,62 +137,7 @@ body {
     color: black;
 }
 
-/* New Styles for the Grid of Images */
-.image-grid-container {
-    padding: 20px;
-    background-color: #fff;
-}
-
-.image-grid-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.image-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-.grid-item {
-    text-align: center;
-}
-
-.grid-item img {
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-.grid-item p {
-    margin-top: 10px;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-}
-
-.image-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    padding: 20px;
-}
-
-.grid-item img {
-    width: 100%;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
+/* Styles for the Grid of Images */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -226,60 +173,20 @@ body {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
-}
-
-.product-price {
-    font-size: 14px;
-    color: #555;
-}
-.section-title {
-    text-align: center;
-    margin: 20px 0;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    padding: 0 50px;
-    justify-items: center;
-}
-
-.product-card {
-    text-align: center;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    width: 100%;
-    max-width: 240px;
-}
-
-.product-card img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 15px;
-}
-
-.best-seller {
-    font-size: 12px;
-    color: #d9534f;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.product-name {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
+    color: #333; /* Ensure visibility */
 }
 
 .product-price {
     font-size: 14px;
     color: #555;
     margin-bottom: 10px;
+}
+
+.section-title {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .small-button {

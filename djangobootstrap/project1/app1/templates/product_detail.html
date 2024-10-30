@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="product-detail">
+    <div class="images">
+        <img src="{% static product.image1 %}" alt="{{ product.name }}">
+        <img src="{% static product.image2 %}" alt="{{ product.name }}">
+        <img src="{% static product.image3 %}" alt="{{ product.name }}">
+    </div>
+    
+    <div class="info">
+        <h1>{{ product.name }}</h1>
+        <p class="price">{{ product.price }}</p>
+        <p class="description">{{ product.description }}</p>
+
+        <div class="actions">
+            <form method="POST" action="{% url 'add_to_cart' %}">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+                <button type="submit" class="add-to-bag">ADD TO BAG</button>
+                <button class="find-in-store">FIND IN-STORE</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

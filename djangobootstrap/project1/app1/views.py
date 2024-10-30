@@ -4,9 +4,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .models import JewelryCategory
 from django.templatetags.static import static
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from .models import Product, ProductCategory  # Updated import
+
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -24,7 +26,8 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 def home_view(request):
-    categories = JewelryCategory.objects.all()
+    categories = ProductCategory.objects.all()
+    print(categories)  # Debugging line to check if categories are fetched
     return render(request, 'home.html', {'categories': categories})
 
 
@@ -43,12 +46,12 @@ def login_view(request):
 
     return render(request, 'login.html')
 
+
 def register(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            # Specify the backend when logging in
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')  # Ensure the backend is set
             return redirect('home')  # Redirect to home page after registration
     else:
@@ -143,3 +146,12 @@ def remove_from_cart(request):
         return redirect('cart')  # Redirect back to the cart page
 
     return JsonResponse({'status': 'error'}, status=400)
+
+def category_detail_view(request, category_id):
+    category = get_object_or_404(ProductCategory, id=category_id)
+    
+    return render(request, 'shop.html', {'category': category})
+
+def product_detail_view(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    return render(request, 'product_detail.html', {'product': product})
