@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center my-4">{{ category.name }}</h1>
+    <div class="row">
+        {% if products %}
+            {% for product in products %}
+            <div class="col-md-3 text-center text-muted">
+                <h4 class="fw-normal">{{ product.name }}</h4>
+                <a href="{% url 'shop' %}?id={{ product.id }}"> <!-- Link to shop.html with product ID -->
+                    <img src="{% static product.image %}" class="img-fluid" alt="{{ product.name }}">
+                </a>
+                <p>${{ product.price }}</p>
+                <p>{{ product.description }}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No products available in this category.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

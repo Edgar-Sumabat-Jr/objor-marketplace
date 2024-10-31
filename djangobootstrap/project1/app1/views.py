@@ -147,11 +147,22 @@ def remove_from_cart(request):
 
     return JsonResponse({'status': 'error'}, status=400)
 
-def category_detail_view(request, category_id):
+def category_detail(request, category_id):
     category = get_object_or_404(ProductCategory, id=category_id)
+    products = category.products.all()  # This fetches products related to the category
+    return render(request, 'category_detail.html', {'category': category, 'products': products})
     
-    return render(request, 'shop.html', {'category': category})
 
-def product_detail_view(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    return render(request, 'product_detail.html', {'product': product})
+def shop_view(request):
+    product_id = request.GET.get('id')
+    product = None
+    similar_products = []
+
+    if product_id:
+        product = get_object_or_404(Product, id=product_id)
+        similar_products = Product.objects.filter(category=product.category).exclude(id=product.id)[:4]  # Get similar products
+
+    return render(request, 'shop.html', {
+        'product': product,
+        'similar_products': similar_products,
+    })

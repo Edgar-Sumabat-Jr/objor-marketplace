@@ -17,6 +17,3 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-
-    def get_image_url(self):
-        return static(self.image)  # Helper to get full static URL
