@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Your Shopping Cart{% endblock %}
 
 {% block content %}
@@ -9,22 +11,27 @@
         <div class="row justify-content-center">
             {% for item in cart_items %}
                 <div class="col-md-4 mb-4">
-                    <div class="product p-3 border rounded shadow-sm">
-                        <img src="{{ item.image }}" alt="{{ item.name }}" class="img-fluid mb-3" style="border-radius: 8px;">
-                        <h3>{{ item.name }}</h3>
-                        <p>Price: {{ item.price }}</p>
+                    <div class="product p-3 border shadow" style="border: 1px solid #e0e0e0; background-color: #fff;">
+                        <img src="{{ item.image }}" alt="{{ item.name }}" class="img-fluid mb-3" style="border-radius: 5px;">
+                        <h3 style="font-family: 'Helvetica Neue', sans-serif;">{{ item.name }}</h3>
+                        <p style="color: #b0b0b0;">Price: {{ item.price }}</p>
                         <p>{{ item.description }}</p>
                         <form method="POST" action="{% url 'remove_from_cart' %}">
                             {% csrf_token %}
                             <input type="hidden" name="index" value="{{ forloop.counter0 }}">
-                            <button type="submit" class="btn btn-danger">Remove</button>
+                            <button type="submit" class="btn btn-remove">
+                                <i class="fas fa-trash"></i> Remove
+                            </button>
                         </form>
                     </div>
                 </div>
             {% endfor %}
         </div>
     {% else %}
-        <p>Your shopping bag is empty.</p>
+        <div class="empty-cart my-4">
+            <p>Your shopping bag is empty.</p>
+            <a href="{% url 'home' %}" class="btn btn-continue">Continue Shopping</a>
+        </div>
     {% endif %}
 </div>
 
@@ -33,10 +40,10 @@
     <div class="row justify-content-center">
         {% for product in trending_products %}
             <div class="col-md-4 mb-4">
-                <div class="product p-3 border rounded shadow-sm">
-                    <img src="{{ product.image }}" alt="{{ product.name }}" class="img-fluid mb-3" style="border-radius: 8px;">
-                    <h3>{{ product.name }}</h3>
-                    <p>Price: {{ product.price }}</p>
+                <div class="product p-3 border shadow" style="border: 1px solid #e0e0e0; background-color: #fff;">
+                    <img src="{{ product.image }}" alt="{{ product.name }}" class="img-fluid mb-3" style="border-radius: 5px;">
+                    <h3 style="font-family: 'Helvetica Neue', sans-serif;">{{ product.name }}</h3>
+                    <p style="color: #b0b0b0;">Price: {{ product.price }}</p>
                     <p>{{ product.description }}</p>
                 </div>
             </div>
@@ -50,10 +57,65 @@
 
 <div class="text-center mt-4">
     <div class="links">
-        <a href="#" class="mx-2">Join My Pandora</a>
-        <a href="#" class="mx-2">Explore Our Rewards Program</a>
-        <a href="#" class="mx-2">Shop All Products</a>
-        <a href="#" class="mx-2">Learn More About Us</a>
+        <a href="#" class="mx-2" style="color: #555; text-decoration: none;">Join My Pandora</a>
+        <a href="#" class="mx-2" style="color: #555; text-decoration: none;">Explore Our Rewards Program</a>
+        <a href="#" class="mx-2" style="color: #555; text-decoration: none;">Shop All Products</a>
+        <a href="#" class="mx-2" style="color: #555; text-decoration: none;">Learn More About Us</a>
     </div>
 </div>
+
+<style>
+    .links a:hover {
+        color: #d84a4a; /* Soft pink on hover */
+    }
+
+    .empty-cart {
+        margin-top: 20px;
+    }
+
+    .empty-cart p {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    .btn-continue {
+        background-color: white; /* White background */
+        border: 2px solid black; /* Black border */
+        color: black; /* Black text */
+        padding: 10px 20px; /* Padding for the button */
+        text-decoration: none; /* No underline */
+        font-weight: bold; /* Bold text */
+        font-size: 1rem; /* Font size */
+        transition: background-color 0.3s, color 0.3s; /* Transition for hover effects */
+        border-radius: 0; /* Sharp edges */
+    }
+
+    .btn-continue:hover {
+        background-color: black; /* Black background on hover */
+        color: white; /* White text on hover */
+    }
+
+    .btn-remove {
+        background-color: white; /* White background */
+        border: 2px solid black; /* Black border */
+        color: black; /* Black text */
+        padding: 10px 20px; /* Padding for the button */
+        text-decoration: none; /* No underline */
+        font-weight: bold; /* Bold text */
+        font-size: 1rem; /* Font size */
+        transition: background-color 0.3s, color 0.3s; /* Transition for hover effects */
+        border-radius: 0; /* Sharp edges */
+        font-family: 'Helvetica Neue', sans-serif; /* Use a clean font */
+    }
+
+    .btn-remove:hover {
+        background-color: black; /* Black background on hover */
+        color: white; /* White text on hover */
+    }
+
+    .shadow {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    }
+</style>
+
 {% endblock %}
