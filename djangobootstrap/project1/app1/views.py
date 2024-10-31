@@ -27,7 +27,7 @@ class CustomUserCreationForm(UserCreationForm):
 
 def home_view(request):
     categories = ProductCategory.objects.all()
-    print(categories)  # Debugging line to check if categories are fetched
+    #print(categories)  # Debugging line to check if categories are fetched
     return render(request, 'home.html', {'categories': categories})
 
 

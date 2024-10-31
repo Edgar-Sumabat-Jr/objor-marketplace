@@ -10,28 +10,28 @@
 }
 
 .category-img:hover {
-    transform: scale(1.05); /* Scale the image up to 110% */
+    transform: scale(1.05); /* Scale the image up to 105% */
 }
 
 .container {
     margin-top: 50px; /* Adjust this value for more or less space */
 }
-
 </style>
 
 <div class="container">
     <h1 class="text-center my-4">Jewelry Categories</h1>
     <div class="row">
         {% for category in categories %}
-        <div class="col-md-3 text-center text-muted">
+        <div class="col-md-3 text-center text-muted mb-4"> <!-- Added mb-4 for spacing -->
             <h4 class="fw-normal">{{ category.name }}</h4>
-            <a href="{% url 'category_detail' category.id %}"> <!-- Adjust the URL as needed -->
-                <img src="{% static category.image %}" class="img-fluid category-img" alt="{{ category.name }}"> <!-- Use the image path from the category -->
+            <a href="{% url 'category_detail' category.id %}">
+                <img src="{% static category.image %}" class="img-fluid category-img" alt="{{ category.name }}">
             </a>
         </div>
+        {% empty %}
+        <p class="text-center">No categories available.</p> <!-- Message if no categories -->
         {% endfor %}
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 {% endblock %}
